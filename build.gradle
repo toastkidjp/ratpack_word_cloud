@@ -2,7 +2,8 @@ apply plugin: 'application'
 
 sourceCompatibility = 1.8
 mainClassName       = "jp.toastkid.ratpack.Main"
-
+def defaultEncoding = 'UTF-8'
+[compileJava, compileTestJava]*.options*.encoding = defaultEncoding
 
 repositories {
   mavenCentral()
