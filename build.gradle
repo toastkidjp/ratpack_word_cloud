@@ -1,0 +1,23 @@
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+mainClassName       = "jp.toastkid.ratpack.Main"
+
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile 'io.ratpack:ratpack-core:1.4.1'
+  compile 'org.codehaus.groovy:groovy-all:2.4.5'
+  testCompile 'junit:junit:4.12'
+}
+
+jar {
+  manifest {
+    attributes 'Main-Class'   : mainClassName
+  }
+  destinationDir = projectDir
+  from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+}
